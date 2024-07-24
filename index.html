@@ -229,31 +229,25 @@
         </div>
       </div>
     </div>
-  </section>
-  <section id="contact" class="contact sec-pad dynamicBg">
+  </section>  <section id="contact" class="contact sec-pad dynamicBg">
     <div class="main-container">
       <h2 class="heading heading-sec heading-sec__mb-med">
         <span class="heading-sec__main heading-sec__main--lt">Contact</span>
-        <span class="heading-sec__sub heading-sec__sub--lt">
-          And Connect With Me
-        </span>
+        <span class="heading-sec__sub heading-sec__sub--lt">And Connect With Me</span>
       </h2>
       <div class="contact__form-container">
-        <form action="/submit-form" method="post" class="contact__form">
+        <form id="contact-form" method="post" class="contact__form">
           <div class="contact__form-field">
             <label class="contact__form-label" for="name">Name</label>
-            <input required placeholder="Enter Your Name" type="text" class="contact__form-input" name="name"
-              id="name" />
+            <input required placeholder="Enter Your Name" type="text" class="contact__form-input" name="name" id="name" />
           </div>
           <div class="contact__form-field">
             <label class="contact__form-label" for="email">Email</label>
-            <input required placeholder="Enter Your Email" type="text" class="contact__form-input" name="email"
-              id="email" />
+            <input required placeholder="Enter Your Email" type="text" class="contact__form-input" name="email" id="email" />
           </div>
           <div class="contact__form-field">
             <label class="contact__form-label" for="message">Message</label>
-            <textarea required cols="30" rows="10" class="contact__form-input" placeholder="Enter Your Message"
-              name="message" id="message"></textarea>
+            <textarea required cols="30" rows="10" class="contact__form-input" placeholder="Enter Your Message" name="message" id="message"></textarea>
           </div>
           <button type="submit" class="btn btn--theme contact__btn">
             Submit
@@ -299,7 +293,32 @@
       </div>
     </div>
   </footer>
-
+    <script type="text/javascript">
+    window.onload = function() {
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            // Send email with EmailJS
+            emailjs.sendForm('service_fi4b6ye', 'template_wqj1oai', this)
+                .then(function() {
+                    console.log('SUCCESS!');
+                    alert('Your message has been sent successfully!');
+                    // Reset the form fields
+                    document.getElementById('contact-form').reset();
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert('Failed to send your message. Please try again later.');
+                });
+        });
+    }
+</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function() {
+        // https://dashboard.emailjs.com/admin/account
+        emailjs.init("vqOHx4Ee_Dez3LplF"); // Replace with your actual User ID
+    })();
+</script>
   <script src="./index.js"></script>
 </body>
 
