@@ -337,15 +337,14 @@
     </div>
   </footer>
     <script type="text/javascript">
+    <script type="text/javascript">
     window.onload = function() {
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            emailjs.sendForm(
-                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-                this
-            ).then(function() {
+            emailjs.sendForm('EMAILJS_SERVICE_ID','EMAILJS_TEMPLATE_ID',this)
+                .then(function() {
+                 console.log('SUCCESS!');
                 alert('✅ Your message has been sent successfully!');
                 document.getElementById('contact-form').reset();
             }, function(error) {
@@ -359,7 +358,7 @@
 <script type="text/javascript">
     (function() {
         // Init with Public Key
-        emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
+        emailjs.init("EMAILJS_PUBLIC_KEY");
     })();
   <script src="./index.js"></script>
 </body>
