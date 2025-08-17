@@ -340,10 +340,13 @@
     <!-- EmailJS Library -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
+<!-- Load config (env vars) -->
+<script src="./config.js"></script>
+
 <script type="text/javascript">
     // Initialize EmailJS
     (function() {
-        emailjs.init("vqOHx4Ee_Dez3LplF"); // <-- Your Public Key
+        emailjs.init(window.EMAILJS_PUBLIC_KEY);  
     })();
 
     window.onload = function() {
@@ -351,8 +354,8 @@
             event.preventDefault();
 
             emailjs.sendForm(
-                "service_fi4b6ye",   // <-- Your Service ID
-                "template_8o9md4o",  // <-- Your Template ID
+                window.EMAILJS_SERVICE_ID,   // from env
+                window.EMAILJS_TEMPLATE_ID,  // from env
                 this
             ).then(function() {
                 console.log('SUCCESS!');
