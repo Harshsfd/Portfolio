@@ -342,7 +342,7 @@
             event.preventDefault(); // Prevent the default form submission
             
             // Send email with EmailJS
-            emailjs.sendForm('Service', 'Temp', this)
+            emailjs.sendForm('SERVICE_KEY', 'TEMPLATE_KEY', this)
                 .then(function() {
                     console.log('SUCCESS!');
                     alert('Your message has been sent successfully!');
